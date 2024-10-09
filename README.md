@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Proyecto de Control de Acceso y Gestión de Espacios de Coworking
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción General
 
-## Available Scripts
+Este proyecto tiene como objetivo desarrollar una aplicación para el control de acceso y la gestión de un espacio de coworking. La aplicación permite registrar y monitorear la entrada y salida de personas, gestionar las salas de trabajo y generar informes administrativos.
 
-In the project directory, you can run:
+## Funcionalidades Principales
 
-### `npm start`
+1. **Registro y Autenticación de Usuarios**  
+   - Registro de usuarios.  
+   - Autenticación de usuarios.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Control de Acceso**  
+   - Registro de entradas y salidas de los usuarios en el espacio de coworking.  
+   - Gestión del aforo de las salas en tiempo real.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Gestión de Salas**  
+   - Visualización de la disponibilidad de salas.  
+   - Reservas de salas para reuniones o trabajo individual.
 
-### `npm test`
+4. **Informes Administrativos**  
+   - Frecuencia de uso de salas y espacio.  
+   - Estadísticas de uso, ausencias y usuarios frecuentes/infrecuentes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Entidades y Relaciones
 
-### `npm run build`
+Las principales entidades del sistema incluyen **Persona**, **Sala**, **Acceso** y **Historial de Acceso**. Cada entidad está relacionada de manera que permite registrar y administrar los accesos a las diferentes salas del coworking.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Endpoints Principales
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Aquí se destacan algunos de los endpoints más importantes del proyecto:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Accesos**  
+  - `POST /accesses/entry`: Registra una nueva entrada.  
+  - `POST /accesses/exit`: Registra una nueva salida.  
+  - `GET /accesses/current/room/{room_id}`: Lista de personas en una sala específica.
 
-### `npm run eject`
+- **Personas**  
+  - `GET /persons/{id}/current-access`: Acceso actual de una persona.  
+  - `GET /persons/{id}/access-history`: Historial de accesos de una persona.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Salas**  
+  - `GET /rooms/{id}/current-status`: Estado actual de una sala.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Administración**  
+  - `POST /administration/daily-report`: Genera un informe diario de accesos y ausencias.  
+  - `GET /administration/reports`: Obtiene informes de accesos por rango de fechas.  
+  - `GET /administration/room-usage`: Estadísticas de uso de las salas.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Instalación
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clona los repositorios del backend y frontend:
 
-## Learn More
+   ```bash
+   git clone https://github.com/tatisortiz/coworking.git
+   git clone https://github.com/tatisortiz/coworking-front.git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Instala las dependencias en ambos proyectos.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+En el backend:
+   ```bash
+cd coworking
+npm install
 
-### Code Splitting
+En el frontend:
+cd coworking-front
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3.Configura las variables de entorno necesarias.
 
-### Analyzing the Bundle Size
+4.Inicia ambos servidores:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+En el backend:
 
-### Making a Progressive Web App
+bash
+Copiar código
+npm start
+En el frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+bash
+Copiar código
+npm start
